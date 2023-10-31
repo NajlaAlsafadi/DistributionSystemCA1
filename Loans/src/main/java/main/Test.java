@@ -54,7 +54,7 @@ public class Test {
 		cDAO.merge(customer);	
 		
 		
-		dDAO.remove(d3);
+		//dDAO.remove(d3);
 		
 		
 		System.out.println(cDAO.getCustomerByName("Najla").getPhone());

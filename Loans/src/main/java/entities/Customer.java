@@ -1,11 +1,16 @@
 package entities;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlElement;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @NamedQueries({
 	@NamedQuery(name="Customer.findAll", query="select o from Customer o"), 
@@ -15,6 +20,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Customer {
 		
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
@@ -23,7 +29,8 @@ public class Customer {
 	private String address;
 	private Double annualSalary;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "loan_id", referencedColumnName = "id")
 	private Loan loan;
 
 	public Customer() {
@@ -37,7 +44,8 @@ public class Customer {
 		this.annualSalary = annualSalary;
 		this.loan = loan;
 	}
-
+	@JsonProperty
+	@XmlElement
 	public int getId() {
 		return id;
 	}
@@ -46,8 +54,8 @@ public class Customer {
 		this.id = id;
 	}
 
-
-
+	@JsonProperty
+	@XmlElement
 	public String getName() {
 		return name;
 	}
@@ -58,8 +66,8 @@ public class Customer {
 		this.name = name;
 	}
 
-
-
+	@JsonProperty
+	@XmlElement
 	public String getPhone() {
 		return phone;
 	}
@@ -70,8 +78,8 @@ public class Customer {
 		this.phone = phone;
 	}
 
-
-
+	@JsonProperty
+	@XmlElement
 	public String getAddress() {
 		return address;
 	}
@@ -82,8 +90,8 @@ public class Customer {
 		this.address = address;
 	}
 
-
-
+	@JsonProperty
+	@XmlElement
 	public Double getAnnualSalary() {
 		return annualSalary;
 	}
@@ -93,8 +101,8 @@ public class Customer {
 	public void setAnnualSalary(Double annualSalary) {
 		this.annualSalary = annualSalary;
 	}
-
-
+	@JsonProperty
+	@XmlElement
 	public Loan getLoan() {
 		return loan;
 	}

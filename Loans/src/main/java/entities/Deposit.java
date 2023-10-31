@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlElement;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Deposit {
@@ -23,7 +26,8 @@ public class Deposit {
 		this.depositDate = depositDate;
 		this.amount = amount;
 	}
-
+	@JsonProperty
+	@XmlElement
 	public int getId() {
 		return id;
 	}
@@ -31,7 +35,8 @@ public class Deposit {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	@JsonProperty
+	@XmlElement
 	public double getAmount() {
 		return amount;
 	}
@@ -39,7 +44,8 @@ public class Deposit {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-
+	@JsonProperty
+	@XmlElement
 	public String getDepositDate() {
 		return depositDate;
 	}

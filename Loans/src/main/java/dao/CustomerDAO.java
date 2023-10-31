@@ -67,5 +67,12 @@ public class CustomerDAO {
 		}
 		return cus;
 	}
+	
+	public Customer getCustomerById(int id) {
+	    EntityManager em = emf.createEntityManager();
+	    Customer customer = em.find(Customer.class, id);
+	    em.close();
+	    return customer;
+	}
 
 }
