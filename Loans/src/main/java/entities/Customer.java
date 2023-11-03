@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 	@NamedQuery(name="Customer.findAll", query="select o from Customer o"), 
 	@NamedQuery(name = "Customer.findByName", query = "select o from Customer o where o.name=:name")
 })
-//@XmlRootElement
+@XmlRootElement
 @Entity
 public class Customer {
 		
@@ -31,7 +31,7 @@ public class Customer {
 	private String address;
 	private Double annualSalary;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     private Loan loan;
 
 	public Customer() {

@@ -4,7 +4,9 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import dao.CustomerDAO;
 import dao.LoanDAO;
+import entities.Customer;
 import entities.Loan;
 
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.List;
 @Path("/loans")
 public class LoanService {
     private LoanDAO dao = new LoanDAO();
+    private CustomerDAO customerDao = new CustomerDAO();
 
     @GET
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -30,13 +33,24 @@ public class LoanService {
             return Response.status(Response.Status.NOT_FOUND).build();
     }
 
+
     @POST
+    @Path("/{customerId}")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Response addLoan(Loan loan) {
+    public Response addLoan(@PathParam("customerId") int customerId, Loan loan) {
+        Customer customer = customerDao.getCustomerById(customerId); 
+        if (customer == null) {
+            return Response.status(Response.Status.NOT_FOUND).build(); 
+        }
         dao.persist(loan);
+        customer.setLoan(loan); 
+        customerDao.merge(customer); 
+        
+
         return Response.ok(loan).build();
     }
+
 
     @PUT
     @Path("/{id}")

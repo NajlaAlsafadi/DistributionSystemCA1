@@ -16,9 +16,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-//@XmlRootElement
+
+import dao.LoanDAO;
+
+@XmlRootElement
 @Entity
 public class Loan {
+	//private LoanDAO loanDao = new LoanDAO();
 
 		
 	@Id
@@ -27,8 +31,11 @@ public class Loan {
 	
 	private String description;
 	private Double loanAmount;
+	private Double totalLoanAmount;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "loan_id")
+	
 	private List<Deposit> deposits = new ArrayList<Deposit>();
 	
 	public Loan() {
@@ -36,10 +43,11 @@ public class Loan {
 	}
 
 	
-	public Loan(String description,Double loanAmount, List<Deposit> deposits) {
+	public Loan(String description,Double loanAmount,Double totalLoanAmount, List<Deposit> deposits) {
 		super();
 		this.description = description;
 		this.loanAmount = loanAmount;
+		this.totalLoanAmount = totalLoanAmount;
 		this.deposits = deposits;
 	}
 	
@@ -87,13 +95,25 @@ public class Loan {
 	
 	@JsonProperty
 	@XmlElement
-	public Double getloanAmount() {
+	public Double getLoanAmount() {
 		return loanAmount;
 	}
 
 
-	public void setloanAmount(Double loanAmount) {
+	public void setLoanAmount(Double loanAmount) {
 		this.loanAmount = loanAmount;
+	}
+
+	@JsonProperty
+	@XmlElement
+	public Double getTotalLoanAmount() {
+		return totalLoanAmount;
+	}
+
+	@JsonProperty
+	@XmlElement
+	public void setTotalLoanAmount(Double totalLoanAmount) {
+		this.totalLoanAmount = totalLoanAmount;
 	}
 
 	

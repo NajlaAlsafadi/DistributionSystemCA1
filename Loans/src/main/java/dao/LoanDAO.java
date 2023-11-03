@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 
+import entities.Deposit;
 import entities.Loan;
 
 public class LoanDAO {
@@ -57,5 +59,21 @@ public class LoanDAO {
         }
         return loan;
     }
+    
+    public Loan getLoanByDeposit(Deposit deposit) {
+        EntityManager em = emf.createEntityManager();
+        Loan loan = null;
+        try {
+            loan = em.createQuery("SELECT l FROM Loan l JOIN l.deposits d WHERE d = :deposit", Loan.class)
+                     .setParameter("deposit", deposit)
+                     .getSingleResult();
+        } catch (NoResultException e) {
+       
+        } finally {
+            em.close();
+        }
+        return loan;
+    }
+    
 }
 

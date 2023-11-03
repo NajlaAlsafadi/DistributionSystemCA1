@@ -31,7 +31,7 @@ public class Test {
 		deposits.add(d2);
 		deposits.add(d3);
 		
-		Loan loan = new Loan("House Loan", 300.00, deposits);
+		Loan loan = new Loan("House Loan", 300.00, 300.00, deposits);
 		lDAO.persist(loan);
 		
 		
