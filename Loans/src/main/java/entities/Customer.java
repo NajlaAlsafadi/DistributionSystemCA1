@@ -1,6 +1,7 @@
 package entities;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,6 +10,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -16,22 +18,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 	@NamedQuery(name="Customer.findAll", query="select o from Customer o"), 
 	@NamedQuery(name = "Customer.findByName", query = "select o from Customer o where o.name=:name")
 })
-
+//@XmlRootElement
 @Entity
 public class Customer {
 		
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
 	private String phone;
 	private String address;
 	private Double annualSalary;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "loan_id", referencedColumnName = "id")
-	private Loan loan;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Loan loan;
 
 	public Customer() {
 

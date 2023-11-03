@@ -4,28 +4,28 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import dao.LoanDAO;
-import entities.Loan;
+import dao.DepositDAO;
+import entities.Deposit;
 
 import java.util.List;
 
-@Path("/loans")
-public class LoanService {
-    private LoanDAO dao = new LoanDAO();
+@Path("/deposits")
+public class DepositService {
+    private DepositDAO dao = new DepositDAO();
 
     @GET
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public List<Loan> getAllLoans() {
-        return dao.getAllLoans();
+    public List<Deposit> getAllDeposits() {
+        return dao.getAllDeposits();
     }
 
     @GET
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Response getLoan(@PathParam("id") int id) {
-        Loan loan = dao.getLoanById(id);
-        if (loan != null)
-            return Response.ok(loan).build();
+    public Response getDeposit(@PathParam("id") int id) {
+        Deposit deposit = dao.getDepositById(id);
+        if (deposit != null)
+            return Response.ok(deposit).build();
         else
             return Response.status(Response.Status.NOT_FOUND).build();
     }
@@ -33,31 +33,31 @@ public class LoanService {
     @POST
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Response addLoan(Loan loan) {
-        dao.persist(loan);
-        return Response.ok(loan).build();
+    public Response addDeposit(Deposit deposit) {
+        dao.persist(deposit);
+        return Response.ok(deposit).build();
     }
 
     @PUT
     @Path("/{id}")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Response updateLoan(@PathParam("id") int id, Loan loan) {
-        Loan existingLoan = dao.getLoanById(id);
-        if (existingLoan == null)
+    public Response updateDeposit(@PathParam("id") int id, Deposit deposit) {
+        Deposit existingDeposit = dao.getDepositById(id);
+        if (existingDeposit == null)
             return Response.status(Response.Status.NOT_FOUND).build();
         
-        loan.setId(id);
-        dao.merge(loan);
-        return Response.ok(loan).build();
+        deposit.setId(id);
+        dao.merge(deposit);
+        return Response.ok(deposit).build();
     }
 
     @DELETE
     @Path("/{id}")
-    public Response deleteLoan(@PathParam("id") int id) {
-        Loan loan = dao.getLoanById(id);
-        if (loan != null) {
-            dao.remove(loan);
+    public Response deleteDeposit(@PathParam("id") int id) {
+        Deposit deposit = dao.getDepositById(id);
+        if (deposit != null) {
+            dao.remove(deposit);
             return Response.ok().build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).build();

@@ -47,5 +47,15 @@ public class LoanDAO {
         return em.createQuery("SELECT l FROM Loan l", Loan.class).getResultList();
     }
 
-
+    public Loan getLoanById(int id) {
+        EntityManager em = emf.createEntityManager();
+        Loan loan = null;
+        try {
+            loan = em.find(Loan.class, id);
+        } finally {
+            em.close();
+        }
+        return loan;
+    }
 }
+

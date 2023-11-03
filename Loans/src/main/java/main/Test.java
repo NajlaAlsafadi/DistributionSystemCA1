@@ -12,7 +12,7 @@ import entities.Loan;
 
 public class Test {
 	
-	
+	//Used Before Adding rest to input into DB
 	public Test() {
 		CustomerDAO cDAO = new CustomerDAO();
 		LoanDAO lDAO = new LoanDAO();

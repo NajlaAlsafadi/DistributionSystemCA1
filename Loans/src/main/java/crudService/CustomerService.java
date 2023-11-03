@@ -12,6 +12,8 @@ import java.util.List;
 @Path("/customers")
 public class CustomerService {
     private CustomerDAO dao = new CustomerDAO();
+    
+    //Test hello path just to make clarify if the problem is my method or the server
 
     @GET
     @Path("/hello")
