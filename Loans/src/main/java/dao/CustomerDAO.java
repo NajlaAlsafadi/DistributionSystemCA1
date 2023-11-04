@@ -74,5 +74,13 @@ public class CustomerDAO {
 	    em.close();
 	    return customer;
 	}
-
+	
+	public Customer getCustomerByLoanId(int loanId) {
+	    for (Customer customer : getAllCustomers()) {
+	        if (customer.getLoan() != null && customer.getLoan().getId() == loanId) {
+	            return customer;
+	        }
+	    }
+	    return null;
+	}
 }

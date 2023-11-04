@@ -80,6 +80,9 @@ public class LoanService {
     public Response deleteLoan(@PathParam("id") int id) {
         Loan loan = dao.getLoanById(id);
         if (loan != null) {
+        	Customer customer = customerDao.getCustomerByLoanId(loan.getId());
+            customer.setLoan(null);
+            customerDao.merge(customer); 
             dao.remove(loan);
             return Response.ok().build();
         } else {
