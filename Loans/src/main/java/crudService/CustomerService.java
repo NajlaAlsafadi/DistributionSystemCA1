@@ -7,6 +7,7 @@ import javax.ws.rs.core.Response;
 
 import dao.CustomerDAO;
 import entities.Customer;
+import entities.HelloWorld;
 
 import java.util.List;
 
@@ -22,16 +23,33 @@ public class CustomerService {
     public String hello(){
         return "Hello World";    
     }
+    
+    @POST
+    @Path("/helloxml")
+    @Consumes({MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_XML})
+    public HelloWorld helloXml(HelloWorld helloWorld) {
+        System.out.println("Received message: " + helloWorld.getMessage());
+        return new HelloWorld("Hello, " + helloWorld.getMessage());
+    }
 
     @GET
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Path("/json")
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Customer> getAllCustomers() {
+        return dao.getAllCustomers();
+    }
+    
+    @GET
+    @Path("/xml")
+    @Produces({MediaType.APPLICATION_XML})
+    public List<Customer> getAllCustomers1() {
         return dao.getAllCustomers();
     }
 
     @GET
     @Path("/{id}")
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON})
     public Response getCustomer(@PathParam("id") int id) {
         Customer customer = dao.getCustomerById(id);
         if (customer != null)
@@ -42,7 +60,7 @@ public class CustomerService {
 
     @POST
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON})
     public Response addCustomer(Customer customer) {
         dao.persist(customer);
         return Response.ok(customer).build();
@@ -51,7 +69,7 @@ public class CustomerService {
     @PUT
     @Path("/{id}")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON})
     public Response updateCustomer(@PathParam("id") int id, Customer customer) {
         Customer existingCustomer = dao.getCustomerById(id);
         if (existingCustomer == null)

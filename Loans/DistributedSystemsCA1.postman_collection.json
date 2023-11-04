@@ -1,0 +1,466 @@
+{
+	"info": {
+		"_postman_id": "8d962b61-ca52-4dc3-a679-bd87f46fec9a",
+		"name": "DistributedSystemsCA1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30395215"
+	},
+	"item": [
+		{
+			"name": "CustomerCRUD",
+			"item": [
+				{
+					"name": "/Loans/rest/customers/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Loans/rest/customers/76",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Loans",
+								"rest",
+								"customers",
+								"76"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Loans/rest/customers/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Tester\",\r\n    \"phone\": \"0894468775\",\r\n    \"address\": \"Dublin 01\",\r\n    \"annualSalary\": 40000.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Loans/rest/customers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Loans",
+								"rest",
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Loans/rest/customers/ xml",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<customer>\r\n     <name>Testerxml</name>\r\n     <phone>0894468775</phone>\r\n     <address>Dublin 01</address>\r\n     <annualSalary>40000.0</annualSalary>\r\n </customer>\r\n",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Loans/rest/customers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Loans",
+								"rest",
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TestXmlHelloWorld",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<helloWorld>\r\n    <name>naj</name>\r\n</helloWorld>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Loans/rest/customers/helloxml",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Loans",
+								"rest",
+								"customers",
+								"helloxml"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Loans/rest/customers/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Loans/rest/customers/21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Loans",
+								"rest",
+								"customers",
+								"21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Loans/rest/customers/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Loans/rest/customers/42",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Loans",
+								"rest",
+								"customers",
+								"42"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LoanCRUD",
+			"item": [
+				{
+					"name": "/Loans/rest/loans/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Loans/rest/loans/77",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Loans",
+								"rest",
+								"loans",
+								"77"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Loans/rest/loans/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"description\": \"Test Loan3\",\r\n        \"loanAmount\": 300.0,\r\n        \"totalLoanAmount\": 300.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Loans/rest/loans/71",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Loans",
+								"rest",
+								"loans",
+								"71"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Loans/rest/loans/ xml",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<loan>\r\n    <description>House Loan</description>\r\n    <loanAmount>300.0</loanAmount>\r\n    <totalLoanAmount>300.0</totalLoanAmount>\r\n    <deposits>\r\n        <deposit>\r\n            <depositDate>22/11/2022</depositDate>\r\n            <amount>100.0</amount>\r\n        </deposit>\r\n    </deposits>\r\n</loan>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Loans/rest/loans/76",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Loans",
+								"rest",
+								"loans",
+								"76"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Loans/rest/loans/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Loans/rest/loans/68",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Loans",
+								"rest",
+								"loans",
+								"68"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Loans/rest/loans/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Test Loan3\",\r\n    \"loanAmount\": 290.0,\r\n    \"totalLoanAmount\": 300.0,\r\n    \"deposits\": [\r\n        {\r\n            \"depositDate\": \"26/01/2023\",\r\n            \"amount\": 10.0\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Loans/rest/customers/42",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Loans",
+								"rest",
+								"customers",
+								"42"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DepositCRUD",
+			"item": [
+				{
+					"name": "/Loans/rest/deposits/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Loans/rest/deposits/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Loans",
+								"rest",
+								"deposits",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Loans/rest/deposits/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n                \"depositDate\": \"26/01/2022\",\r\n                \"amount\": 100.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Loans/rest/deposits/68",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Loans",
+								"rest",
+								"deposits",
+								"68"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Loans/rest/deposits/ xml",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<deposit>\r\n    <depositDate>26/01/2022</depositDate>\r\n    <amount>100.0</amount>\r\n</deposit>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Loans/rest/deposits/77",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Loans",
+								"rest",
+								"deposits",
+								"77"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Loans/rest/deposits/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Loans/rest/deposits/70",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Loans",
+								"rest",
+								"deposits",
+								"70"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Loans/rest/deposits/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"depositDate\": \"26/01/2023\",\r\n    \"amount\": 10.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Loans/rest/deposits/53",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Loans",
+								"rest",
+								"deposits",
+								"53"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

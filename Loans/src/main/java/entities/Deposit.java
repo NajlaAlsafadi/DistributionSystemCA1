@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-@XmlRootElement
+@XmlRootElement(name = "deposit")
 @Entity
 public class Deposit {
 	
@@ -32,7 +32,7 @@ public class Deposit {
 		this.depositDate = depositDate;
 		this.amount = amount;
 	}
-	@JsonProperty
+	
 	@XmlElement
 	public int getId() {
 		return id;
@@ -41,7 +41,7 @@ public class Deposit {
 	public void setId(int id) {
 		this.id = id;
 	}
-	@JsonProperty
+	
 	@XmlElement
 	public double getAmount() {
 		return amount;
@@ -50,7 +50,7 @@ public class Deposit {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	@JsonProperty
+	
 	@XmlElement
 	public String getDepositDate() {
 		return depositDate;

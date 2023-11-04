@@ -1,6 +1,7 @@
 package crudService;
 
 import javax.ws.rs.*;
+
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -17,14 +18,22 @@ public class LoanService {
     private CustomerDAO customerDao = new CustomerDAO();
 
     @GET
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Path("/json")
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Loan> getAllLoans() {
+        return dao.getAllLoans();
+    }
+    
+    @GET
+    @Path("/xml")
+    @Produces({MediaType.APPLICATION_XML})
+    public List<Loan> getAllLoans1() {
         return dao.getAllLoans();
     }
 
     @GET
     @Path("/{id}")
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON})
     public Response getLoan(@PathParam("id") int id) {
         Loan loan = dao.getLoanById(id);
         if (loan != null)
@@ -37,7 +46,7 @@ public class LoanService {
     @POST
     @Path("/{customerId}")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON})
     public Response addLoan(@PathParam("customerId") int customerId, Loan loan) {
         Customer customer = customerDao.getCustomerById(customerId); 
         if (customer == null) {
@@ -55,7 +64,7 @@ public class LoanService {
     @PUT
     @Path("/{id}")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON})
     public Response updateLoan(@PathParam("id") int id, Loan loan) {
         Loan existingLoan = dao.getLoanById(id);
         if (existingLoan == null)

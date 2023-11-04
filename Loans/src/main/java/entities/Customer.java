@@ -1,5 +1,6 @@
 package entities;
 import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 	@NamedQuery(name="Customer.findAll", query="select o from Customer o"), 
 	@NamedQuery(name = "Customer.findByName", query = "select o from Customer o where o.name=:name")
 })
-@XmlRootElement
+@XmlRootElement(name = "customer")
 @Entity
 public class Customer {
 		
@@ -45,7 +46,7 @@ public class Customer {
 		this.annualSalary = annualSalary;
 		this.loan = loan;
 	}
-	@JsonProperty
+	
 	@XmlElement
 	public int getId() {
 		return id;
@@ -55,7 +56,6 @@ public class Customer {
 		this.id = id;
 	}
 
-	@JsonProperty
 	@XmlElement
 	public String getName() {
 		return name;
@@ -66,8 +66,6 @@ public class Customer {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	@JsonProperty
 	@XmlElement
 	public String getPhone() {
 		return phone;
@@ -78,8 +76,6 @@ public class Customer {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-	@JsonProperty
 	@XmlElement
 	public String getAddress() {
 		return address;
@@ -91,7 +87,6 @@ public class Customer {
 		this.address = address;
 	}
 
-	@JsonProperty
 	@XmlElement
 	public Double getAnnualSalary() {
 		return annualSalary;
@@ -102,7 +97,6 @@ public class Customer {
 	public void setAnnualSalary(Double annualSalary) {
 		this.annualSalary = annualSalary;
 	}
-	@JsonProperty
 	@XmlElement
 	public Loan getLoan() {
 		return loan;

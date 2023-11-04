@@ -18,14 +18,20 @@ public class DepositService {
     private LoanDAO loanDao = new LoanDAO();
 
     @GET
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Path("/json")
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Deposit> getAllDeposits() {
         return dao.getAllDeposits();
     }
-
+    @GET
+    @Path("/xml")
+    @Produces({MediaType.APPLICATION_XML})
+    public List<Deposit> getAllDeposits1() {
+        return dao.getAllDeposits();
+    }
     @GET
     @Path("/{id}")
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON})
     public Response getDeposit(@PathParam("id") int id) {
         Deposit deposit = dao.getDepositById(id);
         if (deposit != null)
@@ -38,7 +44,7 @@ public class DepositService {
     @POST
     @Path("/{loanId}")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON})
     public Response addDeposit(@PathParam("loanId") int loanId, Deposit deposit) {
         Loan loan = loanDao.getLoanById(loanId);
         if (loan != null) {
@@ -58,7 +64,7 @@ public class DepositService {
     @PUT
     @Path("/{id}")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_JSON})
     public Response updateDeposit(@PathParam("id") int id, Deposit deposit) {
         Deposit existingDeposit = dao.getDepositById(id);
         if (existingDeposit == null)

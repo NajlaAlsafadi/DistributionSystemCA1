@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -19,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import dao.LoanDAO;
 
-@XmlRootElement
+@XmlRootElement(name = "loan")
 @Entity
 public class Loan {
 	//private LoanDAO loanDao = new LoanDAO();
@@ -59,7 +60,7 @@ public class Loan {
 	public void addDeposit(Deposit deposit) {
 		deposits.add(deposit);
 	}
-	@JsonProperty
+	
 	@XmlElement
 	public int getId() {
 		return id;
@@ -69,7 +70,7 @@ public class Loan {
 		this.id = id;
 	}
 
-	@JsonProperty
+	
 	@XmlElement
 	public String getDescription() {
 		return description;
@@ -81,7 +82,7 @@ public class Loan {
 		this.description = description;
 	}
 
-	@JsonProperty
+	
 	@XmlElement
 	public List<Deposit> getDeposits() {
 		return deposits;
@@ -93,7 +94,7 @@ public class Loan {
 		this.deposits = deposits;
 	}
 	
-	@JsonProperty
+	
 	@XmlElement
 	public Double getLoanAmount() {
 		return loanAmount;
@@ -104,14 +105,14 @@ public class Loan {
 		this.loanAmount = loanAmount;
 	}
 
-	@JsonProperty
+	
 	@XmlElement
 	public Double getTotalLoanAmount() {
 		return totalLoanAmount;
 	}
 
-	@JsonProperty
-	@XmlElement
+	
+	
 	public void setTotalLoanAmount(Double totalLoanAmount) {
 		this.totalLoanAmount = totalLoanAmount;
 	}
